@@ -3,10 +3,13 @@ import inspect
 from logger import logger
 
 signal_handlers = []
+RUNNING = False
+FINISH_SAVE = False
 
 
 def handle_inter(sign, frame):
-    pass
+    if FINISH_SAVE:
+        exit()
 
 
 def add_signal_handler(func):
@@ -20,3 +23,4 @@ def add_signal_handler(func):
 def init_script():
     for handler in signal_handlers:
         signal.signal(signal.SIGINT, handler)
+    RUNNING = True

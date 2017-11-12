@@ -3,3 +3,4 @@ data
 
 *.log
 config
+model_weight
